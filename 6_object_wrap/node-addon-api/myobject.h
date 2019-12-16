@@ -3,19 +3,24 @@
 
 #include <napi.h>
 
+struct Data {
+
+};
+
 class MyObject : public Napi::ObjectWrap<MyObject> {
- public:
-  static Napi::Object Init(Napi::Env env, Napi::Object exports);
-  MyObject(const Napi::CallbackInfo& info);
+public:
+	static Napi::Object Init(Napi::Env env, Napi::Object exports);
+	MyObject(const Napi::CallbackInfo& info);
 
- private:
-  static Napi::FunctionReference constructor;
+	static Napi::FunctionReference constructor;
+private:
+	std::shared_ptr<Data> m_data;
 
-  Napi::Value GetValue(const Napi::CallbackInfo& info);
-  Napi::Value PlusOne(const Napi::CallbackInfo& info);
-  Napi::Value Multiply(const Napi::CallbackInfo& info);
+	Napi::Value GetValue(const Napi::CallbackInfo& info);
+	Napi::Value PlusOne(const Napi::CallbackInfo& info);
+	Napi::Value Multiply(const Napi::CallbackInfo& info);
 
-  double value_;
+	double value_;
 };
 
 #endif

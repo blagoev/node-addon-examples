@@ -1,6 +1,17 @@
 var addon = require('bindings')('addon');
 
 try {
+    var obj = addon.MyObject.create();
+    }
+    catch (e) {
+        console.error("Incorrect expected exception message:" + e.message);
+    }
+    
+    global.gc()
+    global.gc()
+    global.gc()
+/*
+try {
 var obj = new addon.MyObject();
 }
 catch (e) {
@@ -53,3 +64,4 @@ console.log("Success");
 // var newobj = obj.multiply(-1);
 // console.log( newobj.value() ); // -13
 // console.log( obj === newobj ); // false
+*/
